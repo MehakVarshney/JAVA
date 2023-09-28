@@ -1,4 +1,3 @@
-// MEHAK VARSHNEY 37(2215001072)
 import java.util.Scanner;
 
 public class SI {
