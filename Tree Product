@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class TreeProduct {
+    private static final int MOD = 1000000007;
+
+    // Method to calculate the product value for the tree
+    private static long calculateProduct(int[] values, int index, int height) {
+        // If it's a leaf node
+        if (height == 0) {
+            return values[index];
+        }
+        // Calculate the product for the left and right subtrees
+        long leftProduct = calculateProduct(values, index * 2, height - 1);
+        long rightProduct = calculateProduct(values, index * 2 + 1, height - 1);
+        // Return the maximum product
+        return Math.max(values[index] * leftProduct % MOD, values[index] * rightProduct % MOD);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            int H = scanner.nextInt();
+            if (H == 0) break; // End of input
+
+            int totalNodes = (int) Math.pow(2, H) - 1;
+            int[] values = new int[totalNodes + 1];
+            for (int i = 1; i <= totalNodes; i++) {
+                values[i] = scanner.nextInt();
+            }
+
+            long result = calculateProduct(values, 1, H - 1);
+            System.out.println(result);
+        }
+        scanner.close();
+    }
+}
