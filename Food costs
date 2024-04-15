@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class FoodCosts {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int X = scanner.nextInt(); // Cost of mess food per day
+        int Y = scanner.nextInt(); // Cost of restaurant food on Sunday
+
+        // Calculate the total cost: 6 days of mess food + 1 day of restaurant food
+        int totalCost = 6 * X + Y;
+        System.out.println(totalCost);
+
+        scanner.close();
+    }
+}
